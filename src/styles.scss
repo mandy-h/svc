@@ -1,0 +1,98 @@
+* {
+  box-sizing: border-box;
+}
+
+$outlineWidth: 2px;
+$focusColor: #5e9ed6;
+
+.variant {
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  justify-content: center;
+  position: relative;
+}
+
+// .variant.is-selected {
+//   .variant-text {
+//     border: 2px solid purple;
+//   }
+//   .variant-swatch {
+//     outline: $outlineWidth solid purple;
+//   }
+// }
+
+.variant.is-unavailable:before {
+  background-color: hsla(0, 0, 0, .7);
+  content: '';
+  display: inline-block;
+  height: 1px;
+  position: absolute;
+  transform: rotate(-45deg);
+  width: 32px;
+}
+
+.variant-swatch {
+  border: 2px solid #fff;
+  border-radius: 50%;
+  display: inline-block;
+  height: 32px;
+  outline: $outlineWidth solid #ccc;
+  width: 32px;
+}
+
+.variant-text {
+  border: 2px solid transparent;
+  border-radius: 4px;
+  display: inline-block;
+  padding: 5px;
+}
+
+.variant input {
+  cursor: inherit;
+  height: 100%;
+  left: 0;
+  margin: 0;
+  opacity: 0;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+.variant input:checked + .variant-text {
+  border: 2px solid purple; 
+}
+
+.variant input:checked + .variant-swatch {
+  outline: $outlineWidth solid purple;
+}
+
+.variant input:focus + .variant-text,
+.variant input:focus + .variant-swatch {
+  // Fallback
+  outline: 2px solid $focusColor;
+  // Firefox
+  outline: 5px auto Highlight;
+  // Chrome, Safari
+  outline: 5px auto -webkit-focus-ring-color;
+}
+
+.variants {
+  column-gap: $outlineWidth * 2 + 5px;
+  display: flex;
+}
+
+.variant-group {
+  border: none;
+  margin: 0 0 20px;
+  padding: 0;
+}
+
+.variant-group-label {
+  border: none;
+  padding: 0;
+}
